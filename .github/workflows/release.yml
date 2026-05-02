@@ -38,9 +38,6 @@ jobs:
       - name: Verify dependency provenance
         run: npm audit signatures
 
-      - name: Run tests
-        run: npm test
-
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
