@@ -1,0 +1,30 @@
+# src/lib/
+
+Bibliotecas internas reutilizáveis. Funcionalidade pura, sem efeitos colaterais quando possível. Sem dependências externas.
+
+## SRP por pasta
+
+Cada subpasta agrupa funções relacionadas a UMA responsabilidade conceitual:
+
+- `errors/`: hierarquia de erros tipados
+- `platform/`: detecção de SO
+- `paths/`: resolução de paths derivados
+- `arg-parser/`: parser de argv
+- `logger/`: saída textual com cores ANSI
+- `package-info/`: leitura do package.json
+- `auth-check/`: verificações de autenticação do Claude Code
+- `claude-invoker/`: spawn de processos `claude`
+- `file-ops/`: wrappers minimalistas sobre `node:fs/promises`
+- `manifest/`: leitura/escrita do manifest de instalação
+- `doctor-checks/`: checks individuais do comando `doctor`
+- `doctor-output/`: formatação de saída do comando `doctor`
+
+Cada pasta tem barrel `index.js` que reexporta tudo. Cada arquivo dentro implementa UMA função/classe/constante.
+
+## Erros tipados
+
+Todo erro lançado por código de produção é instância de `KeystoneError` ou subclasse. Nunca lançar `Error` puro. Subclasses adicionam `code` (string SCREAMING_SNAKE) e `exitCode` (number sequencial).
+
+## Cross-platform
+
+Funções que dependem de plataforma (path separator, executable bit, spawn de binários) precisam ser testadas com mock de plataforma para garantir coverage 100% em todas as plataformas da matriz CI.
