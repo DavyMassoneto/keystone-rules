@@ -1,8 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { renderTemplate, validateTemplate } from '#lib/claude-md';
-import template from '#assets/claude-md-template.json' with { type: 'json' };
+import { renderTemplate, template, validateTemplate } from '#lib/claude-md';
 
-describe('claude-md-template.json', () => {
+describe('claude-md-template', () => {
   it('passes schema validation', () => {
     expect(() => validateTemplate(template)).not.toThrow();
   });
