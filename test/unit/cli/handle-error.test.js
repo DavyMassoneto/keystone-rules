@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { handleError } from '#cli';
+import { error, InvalidArgumentError, UnknownCommandError } from '#lib';
 
 vi.mock('#lib', async () => {
   const actual = await vi.importActual('#lib');
   return { ...actual, error: vi.fn() };
 });
-
-import { handleError } from './handle-error.js';
-import { error, InvalidArgumentError, UnknownCommandError } from '#lib';
 
 beforeEach(() => {
   vi.mocked(error).mockClear();

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { route } from './route.js';
+import { route } from '#cli';
 import { UnknownCommandError } from '#lib';
 
 const versionCommand = { name: 'version', description: 'v', run: () => 0 };

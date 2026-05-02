@@ -4,7 +4,7 @@ export default defineConfig({
   test: {
     globals: false,
     pool: 'forks',
-    include: ['test/**/*.test.js', 'src/**/*.test.js'],
+    include: ['test/**/*.test.js'],
     reporters: ['default'],
     coverage: {
       provider: 'v8',

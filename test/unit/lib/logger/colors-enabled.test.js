@@ -1,5 +1,5 @@
 import { describe, it, expect, afterEach, vi } from 'vitest';
-import { colorsEnabled } from './colors-enabled.js';
+import { colorsEnabled } from '../../../../src/lib/logger/colors-enabled.js';
 
 const originalIsTTY = process.stdout.isTTY;
 
