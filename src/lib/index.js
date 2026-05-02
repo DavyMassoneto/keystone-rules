@@ -8,3 +8,4 @@ export * from './file-ops/index.js';
 export * from './claude-invoker/index.js';
 export * from './auth-check/index.js';
 export * from './manifest/index.js';
+export * from './doctor-output/index.js';
