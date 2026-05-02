@@ -16,8 +16,7 @@ Cada subpasta agrupa funções relacionadas a UMA responsabilidade conceitual:
 - `claude-invoker/`: spawn de processos `claude`
 - `file-ops/`: wrappers minimalistas sobre `node:fs/promises`
 - `manifest/`: leitura/escrita do manifest de instalação
-- `doctor-checks/`: checks individuais do comando `doctor`
-- `doctor-output/`: formatação de saída do comando `doctor`
+- `doctor-output/`: orquestração e formatação de saída do comando `doctor`
 
 Cada pasta tem barrel `index.js` que reexporta tudo. Cada arquivo dentro implementa UMA função/classe/constante.
 
