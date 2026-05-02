@@ -7,3 +7,4 @@ export * from './errors/index.js';
 export * from './file-ops/index.js';
 export * from './claude-invoker/index.js';
 export * from './auth-check/index.js';
+export * from './manifest/index.js';
