@@ -7,6 +7,11 @@
     "ks": "src/cli.js"
   },
   "main": "./src/cli.js",
+  "imports": {
+    "#lib": "./src/lib/index.js",
+    "#commands": "./src/commands/index.js",
+    "#cli": "./src/cli/index.js"
+  },
   "engines": {
     "node": ">=24"
   },
