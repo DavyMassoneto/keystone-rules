@@ -1,0 +1,43 @@
+{
+  "name": "keystone-rules",
+  "version": "0.0.1",
+  "description": "Opinionated configuration package for LLM coding agents (Claude Code initially). Distributes skills, hooks, rules, and settings via a single CLI.",
+  "type": "module",
+  "bin": {
+    "ks": "src/cli.js"
+  },
+  "main": "./src/cli.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "src",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0"
+  },
+  "keywords": [
+    "claude-code",
+    "llm",
+    "ai-coding",
+    "skills",
+    "hooks",
+    "rules",
+    "configuration"
+  ],
+  "author": "Davy Massoneto <davy.massoneto@yahoo.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavyMassoneto/keystone-rules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DavyMassoneto/keystone-rules/issues"
+  },
+  "homepage": "https://github.com/DavyMassoneto/keystone-rules#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

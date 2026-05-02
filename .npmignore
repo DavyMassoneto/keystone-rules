@@ -1,0 +1,9 @@
+.github/
+test/
+.gitignore
+.nvmrc
+commitlint.config.js
+release.config.js
+vitest.config.js
+*.test.js
+.editorconfig
