@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { versionCommand } from '#commands';
+import { getPackageInfo, print } from '#lib';
 
 vi.mock('#lib', async () => {
   const actual = await vi.importActual('#lib');
@@ -8,9 +10,6 @@ vi.mock('#lib', async () => {
     print: vi.fn(),
   };
 });
-
-import { versionCommand } from '#commands';
-import { getPackageInfo, print } from '#lib';
 
 beforeEach(() => {
   vi.mocked(getPackageInfo).mockReturnValue({

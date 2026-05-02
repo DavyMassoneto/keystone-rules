@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { helpCommand } from '#commands';
+import { print } from '#lib';
 
 vi.mock('#lib', async () => {
   const actual = await vi.importActual('#lib');
   return { ...actual, print: vi.fn() };
 });
-
-import { helpCommand } from '#commands';
-import { print } from '#lib';
 
 beforeEach(() => {
   vi.mocked(print).mockClear();

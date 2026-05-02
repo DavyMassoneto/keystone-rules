@@ -1,4 +1,6 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { run } from '#cli';
+import { print, error } from '#lib';
 
 vi.mock('#lib', async () => {
   const actual = await vi.importActual('#lib');
@@ -13,9 +15,6 @@ vi.mock('#lib', async () => {
     })),
   };
 });
-
-import { run } from '#cli';
-import { print, error } from '#lib';
 
 beforeEach(() => {
   vi.mocked(print).mockClear();
