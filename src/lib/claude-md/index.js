@@ -4,6 +4,7 @@ export * from './is-object.js';
 export * from './render-rule-example.js';
 export * from './render-rule.js';
 export * from './render-section.js';
+export * from './render-template.js';
 export * from './validate-rule-example.js';
 export * from './validate-rule.js';
 export * from './validate-section.js';
