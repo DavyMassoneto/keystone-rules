@@ -7,7 +7,7 @@ export async function run(argv) {
   try {
     const parsed = parse(argv);
     const command = route(parsed, commands);
-    return await command.run(commands);
+    return await command.run(commands, parsed);
   } catch (err) {
     return handleError(err);
   }
