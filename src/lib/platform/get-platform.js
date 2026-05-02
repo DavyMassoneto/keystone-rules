@@ -1,4 +1,4 @@
-import { UnsupportedPlatformError } from '../errors/index.js';
+import { UnsupportedPlatformError } from '#lib/errors';
 
 export function getPlatform() {
   const { platform } = process;

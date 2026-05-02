@@ -7,6 +7,7 @@ const expectedHelp = [
   'Available commands:',
   '  version    Print the keystone-rules version',
   '  help       Show available commands and usage information',
+  '  doctor     Run diagnostic checks on keystone-rules installation',
   '',
   "Run 'ks help <command>' for detailed information on a command.",
   '',

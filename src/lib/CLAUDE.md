@@ -16,14 +16,19 @@ Cada subpasta agrupa funções relacionadas a UMA responsabilidade conceitual:
 - `claude-invoker/`: spawn de processos `claude`
 - `file-ops/`: wrappers minimalistas sobre `node:fs/promises`
 - `manifest/`: leitura/escrita do manifest de instalação
-- `doctor-checks/`: checks individuais do comando `doctor`
-- `doctor-output/`: formatação de saída do comando `doctor`
+- `doctor-output/`: orquestração e formatação de saída do comando `doctor`
 
 Cada pasta tem barrel `index.js` que reexporta tudo. Cada arquivo dentro implementa UMA função/classe/constante.
 
 ## Erros tipados
 
 Todo erro lançado por código de produção é instância de `KeystoneError` ou subclasse. Nunca lançar `Error` puro. Subclasses adicionam `code` (string SCREAMING_SNAKE) e `exitCode` (number sequencial).
+
+## Imports cross-folder dentro de src/lib/
+
+Quando um arquivo em `src/lib/<a>/` precisa importar de `src/lib/<b>/` (subpasta diferente), usar `import { X } from '#lib/<b>'` — barrel da subpasta destino mapeado no `package.json`. Não usar `'../<b>/index.js'` (caminho relativo cross-folder não é interceptável por `vi.mock` no Vitest 4.x) nem `#lib` (causa ciclo via own-barrel).
+
+Imports same-folder (`./sibling.js`) continuam relativos diretos, conforme regra geral em CLAUDE.md raiz.
 
 ## Cross-platform
 
