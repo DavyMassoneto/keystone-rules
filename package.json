@@ -17,6 +17,7 @@
   },
   "files": [
     "src",
+    "!src/**/CLAUDE.md",
     "LICENSE",
     "README.md"
   ],
