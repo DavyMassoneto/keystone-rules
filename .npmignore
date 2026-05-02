@@ -11,3 +11,5 @@ coverage/
 .husky/
 package-lock.json
 CHANGELOG.md
+**/CLAUDE.md
+docs/
