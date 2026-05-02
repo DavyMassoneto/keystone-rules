@@ -1,7 +1,6 @@
 import { spawn } from 'node:child_process';
-import { ClaudeNotFoundError } from '../errors/claude-not-found-error.js';
-import { ClaudeTimeoutError } from '../errors/claude-timeout-error.js';
-import { isWindows } from '../platform/index.js';
+import { ClaudeNotFoundError, ClaudeTimeoutError } from '#lib/errors';
+import { isWindows } from '#lib/platform';
 import { SettleController } from './settle-controller.js';
 
 export function runClaude(args, options = {}) {

@@ -1,6 +1,6 @@
 import { access } from 'node:fs/promises';
 import { constants } from 'node:fs';
-import { isWindows } from '../platform/index.js';
+import { isWindows } from '#lib/platform';
 
 export async function isExecutable(path) {
   if (isWindows()) {
