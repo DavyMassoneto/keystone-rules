@@ -6,7 +6,7 @@ Pacote de configuração opinativa para agentes LLM de codificação. Distribui 
 
 ## Status
 
-🚧 **Em desenvolvimento ativo.** Versão `0.0.1` é apenas reserva de nome no registry. CLI ainda não funcional.
+🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. Comandos de instalação/atualização ainda virão em fases futuras.
 
 ## Instalação
 
@@ -18,16 +18,50 @@ Após instalação, o comando `ks` ficará disponível.
 
 ## Pré-requisitos
 
-- Node.js 20 ou superior
+- Node.js 24 ou superior
 - Claude Code instalado e autenticado (verifique com `claude auth status`)
 
 ## Uso
 
-Documentação completa disponível conforme o pacote evolui. Por enquanto:
+### Versão
 
 ```bash
-ks --help
+ks version       # imprime "keystone-rules <versão>"
+ks --version     # equivalente
+ks -v            # equivalente
 ```
+
+### Ajuda
+
+```bash
+ks help          # lista comandos disponíveis
+ks --help        # equivalente
+ks -h            # equivalente
+ks               # sem argumentos imprime a ajuda
+```
+
+### Diagnóstico de instalação
+
+```bash
+ks doctor        # saída humana, uma linha por verificação com ícone + status
+ks doctor --json # saída JSON estruturada para automação
+```
+
+Verificações executadas:
+
+- **Node.js version**: confere se a versão atende `>=24`.
+- **Claude Code installed**: roda `claude --version` com timeout de 5 segundos.
+- **Claude Code authenticated**: roda `claude auth status` (skipped quando o passo anterior falha).
+- **Claude Code home directory**: confirma que `~/.claude/` (ou `KEYSTONE_CLAUDE_HOME`) existe.
+- **keystone-rules manifest**: estado do manifest de instalação (skipped até o comando `install` chegar).
+- **Manifest JSON validity**: validade do JSON do manifest (skipped até o comando `install`).
+- **Manifest files on disk**: confere se cada arquivo do manifest está presente (skipped até o comando `install`).
+- **Claude Code settings.json**: validade do JSON de settings; ausência do arquivo é considerada estado válido (defaults do Claude Code).
+- **Hook executability**: bit de executável dos hooks instalados (skipped até o comando `install`).
+
+**Exit code:** `0` quando todas as verificações são `ok`/`warn`/`skipped`; `1` quando qualquer verificação resulta em `error`.
+
+**Variável de ambiente `KEYSTONE_CLAUDE_HOME`:** se setada, sobrescreve `~/.claude/`. Útil para testes e ambientes isolados.
 
 ## Plataformas suportadas
 
@@ -42,3 +76,7 @@ MIT © Davy Massoneto
 ## Contribuindo
 
 Issues sobre infraestrutura do CLI são bem-vindas. PRs adicionando skills/hooks pessoais não serão aceitos — o pacote distribui configuração pessoal.
+
+### Implementações pendentes
+
+Tests marcados como `it.todo` aguardando comandos de fases futuras (principalmente `install`) estão catalogados em [`docs/PENDING.md`](docs/PENDING.md). Cada entrada referencia o arquivo de teste e o comportamento que será habilitado quando o comando dependente for implementado.
