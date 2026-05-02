@@ -7,3 +7,6 @@ release.config.js
 vitest.config.js
 *.test.js
 .editorconfig
+.husky/
+package-lock.json
+CHANGELOG.md
