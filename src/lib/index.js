@@ -6,3 +6,4 @@ export * from './package-info/index.js';
 export * from './errors/index.js';
 export * from './file-ops/index.js';
 export * from './claude-invoker/index.js';
+export * from './auth-check/index.js';
