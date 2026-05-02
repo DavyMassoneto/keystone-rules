@@ -27,14 +27,20 @@ Este arquivo registra regras obrigatórias para qualquer LLM trabalhando no repo
 
 ## Imports e barrels
 
-- **Subpath imports `#lib`, `#commands`, `#cli`** mapeados no `package.json`. Apenas barrels mais altos são mapeados.
+- **Subpath imports mapeados no `package.json`:**
+  - `#lib` → `./src/lib/index.js` (barrel raiz de libs)
+  - `#commands` → `./src/commands/index.js`
+  - `#cli` → `./src/cli/index.js`
+  - `#lib/<subpasta>` → `./src/lib/<subpasta>/index.js` para CADA subpasta de `src/lib/` (ex.: `#lib/errors`, `#lib/auth-check`, `#lib/claude-invoker`).
+  Adicionar entrada nova ao `package.json` SEMPRE que uma nova subpasta de `src/lib/` for criada.
 - **Sem deep relative imports** (mais de 1 nível de `../`). Exceções autorizadas explicitamente: `src/lib/package-info/get-package-info.js` (lê package.json da raiz) e `test/unit/lib/logger/colors-enabled.test.js` (testa helper privado não exposto em barrel).
 - **Cada pasta tem barrel `index.js`** que reexporta TUDO da pasta — arquivos diretos E barrels das subpastas via `export * from './subpasta/index.js'`.
-- **Imports externos sempre vêm do barrel mais alto disponível.** `import { X } from '#lib'`, nunca `import { X } from '#lib/errors'` ou `import { X } from '#lib/errors/keystone-error'`.
-- **Imports internos (dentro da mesma pasta) NÃO usam barrel da própria pasta** — usam path relativo direto. Causa ciclo silencioso caso contrário.
+- **Imports externos a `src/lib/`** (em `src/cli/`, `src/commands/`, testes gerais) usam o barrel raiz: `import { X } from '#lib'`. Nunca `import { X } from '#lib/errors'` nesses arquivos.
+- **Imports cross-folder DENTRO de `src/lib/`** (de uma subpasta para outra) usam o barrel da subpasta destino: `import { X } from '#lib/<outra-subpasta>'`. Não usar `#lib` (causa ciclo de own-barrel) nem `'../<outra>/index.js'` (caminho relativo cross-folder não é interceptável por `vi.mock`, validado empiricamente em Vitest 4.x).
+- **Imports same-folder (dentro da mesma pasta)** usam path relativo direto: `import { X } from './sibling.js'`. Não usar barrel da própria pasta (causa ciclo).
 - **Em ESM puro, imports relativos exigem `.js` explícito e `index.js` explícito quando aplicável.**
 - **Imports da mesma origem consolidados em UMA declaração.** Múltiplas linhas `import ... from '<mesma origem>'` no mesmo arquivo são proibidas.
-- **`vi.mock` segue as mesmas regras.** `vi.mock('#lib', ...)` é o padrão. Bypass de barrel ou deep relative em `vi.mock` é proibido. Validamos empiricamente que `vi.mock('#lib', ...)` funciona corretamente no Vitest 4.x + Node 24.
+- **`vi.mock` casa o specifier exato que a source usa.** Se a source faz `import { runClaude } from '#lib/claude-invoker'`, o teste mocka via `vi.mock('#lib/claude-invoker', ...)`. Mock no barrel pai (`#lib`) NÃO se propaga para subpastas re-exportadas via `export * from './subpasta/index.js'` — comportamento confirmado empiricamente em Vitest 4.x + Node 24.
 
 ## Conventional Commits e fluxo
 
