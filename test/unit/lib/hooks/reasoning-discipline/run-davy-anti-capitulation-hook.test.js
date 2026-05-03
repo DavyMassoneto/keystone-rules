@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { runReasoningDisciplineDetect } from '#lib/hooks/davy-anti-capitulation';
+import { runReasoningDisciplineDetect } from '#lib/hooks/reasoning-discipline';
 import { readStdin } from '#lib/hooks';
 import { readFile } from 'node:fs/promises';
 

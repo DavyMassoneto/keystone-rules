@@ -16,7 +16,7 @@
     "#lib/errors": "./src/lib/errors/index.js",
     "#lib/file-ops": "./src/lib/file-ops/index.js",
     "#lib/hooks": "./src/lib/hooks/index.js",
-    "#lib/hooks/davy-anti-capitulation": "./src/lib/hooks/davy-anti-capitulation/index.js",
+    "#lib/hooks/reasoning-discipline": "./src/lib/hooks/reasoning-discipline/index.js",
     "#lib/logger": "./src/lib/logger/index.js",
     "#lib/manifest": "./src/lib/manifest/index.js",
     "#lib/package-info": "./src/lib/package-info/index.js",
