@@ -1,1 +1,1 @@
-export * from './run-davy-anti-capitulation-hook.js';
+export * from './run-detect-hook.js';

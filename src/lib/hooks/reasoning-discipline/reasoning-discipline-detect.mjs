@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { runReasoningDisciplineDetect } from './run-davy-anti-capitulation-hook.js';
+import { runReasoningDisciplineDetect } from './run-detect-hook.js';
 
 try {
   await runReasoningDisciplineDetect();
