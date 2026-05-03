@@ -6,3 +6,4 @@ export * from './invalid-json-error.js';
 export * from './claude-not-found-error.js';
 export * from './claude-timeout-error.js';
 export * from './invalid-template-error.js';
+export * from './invalid-hook-config-error.js';
