@@ -1,3 +1,5 @@
+export * from './detect-pressure.js';
+export * from './match-fuzzy-pattern.js';
 export * from './validate-detection-config.js';
 export * from './validate-hook-config.js';
 export * from './validate-hook-metadata.js';
