@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { runHook } from './_helpers/run-hook.mjs';
 
-const reminderSnippet = 'ATTENTION: The user expressed disapproval. STOP.';
+const reminderSnippet = 'This user just expressed frustration.';
 
 describe('davy-anti-capitulation hook', () => {
   it('exits 0 with empty stdout when the prompt is clean', async () => {
