@@ -6,7 +6,7 @@ Pacote de configuração opinativa para agentes LLM de codificação. Distribui 
 
 ## Status
 
-🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. O pacote já distribui o primeiro hook comportamental (`davy-anti-capitulation`); os comandos de instalação/atualização ainda virão em fases futuras.
+🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. O pacote já distribui o primeiro sistema comportamental (`reasoning-discipline`); os comandos de instalação/atualização ainda virão em fases futuras.
 
 ## Instalação
 
@@ -65,9 +65,9 @@ Verificações executadas:
 
 ### Behavioral hooks
 
-The package distributes behavioral hooks to be installed via the future `install` command. Currently included:
+The package distributes behavioral hook systems to be installed via the future `install` command. Currently included:
 
-- `davy-anti-capitulation`: UserPromptSubmit hook that detects social pressure patterns in user prompts and injects a reminder to the LLM, preventing capitulation without new technical evidence.
+- `reasoning-discipline`: a two-hook system enforcing disciplined reasoning under user pressure. The detect hook (`UserPromptSubmit`) flags pressure language in the user prompt and injects a reminder; the audit hook (`Stop`) inspects the LLM response and forces continuation with feedback when the response shows sycophantic patterns.
 
 These hooks become installable when the `install` command is implemented.
 
