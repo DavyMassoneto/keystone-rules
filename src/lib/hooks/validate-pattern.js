@@ -1,5 +1,6 @@
 import { InvalidHookConfigError } from '#lib/errors';
 import { isNonEmptyString, isObject } from '#lib/shared';
+import { validateRegexValue } from './validate-regex-value.js';
 
 export function validatePattern(pattern, path) {
   if (!isObject(pattern)) {
@@ -23,12 +24,6 @@ export function validatePattern(pattern, path) {
     );
   }
   if (pattern.type === 'regex') {
-    try {
-      new RegExp(pattern.value);
-    } catch {
-      throw new InvalidHookConfigError(
-        `Invalid hook config: ${path}.value must be a valid regular expression`,
-      );
-    }
+    validateRegexValue(pattern.value, path);
   }
 }
