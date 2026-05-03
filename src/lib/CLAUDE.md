@@ -18,6 +18,7 @@ Cada subpasta agrupa funções relacionadas a UMA responsabilidade conceitual:
 - `manifest/`: leitura/escrita do manifest de instalação
 - `doctor-output/`: orquestração e formatação de saída do comando `doctor`
 - `shared/`: predicates genéricos reutilizados por múltiplas pastas (`isObject`, `isNonEmptyString`, `isNonEmptyArray`)
+- `text-distance/`: utilitários de comparação textual (Levenshtein clássico + normalização + distância normalizada)
 
 Cada pasta tem barrel `index.js` que reexporta tudo. Cada arquivo dentro implementa UMA função/classe/constante.
 
