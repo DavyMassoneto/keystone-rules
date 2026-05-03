@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { runDavyAntiCapitulationHook } from '#lib/hooks/davy-anti-capitulation';
+import { runReasoningDisciplineDetect } from '#lib/hooks/davy-anti-capitulation';
 import { readStdin } from '#lib/hooks';
 import { readFile } from 'node:fs/promises';
 
@@ -39,7 +39,7 @@ afterEach(() => {
   vi.clearAllMocks();
 });
 
-describe('runDavyAntiCapitulationHook', () => {
+describe('runReasoningDisciplineDetect', () => {
   it('writes the formatted hook context to stdout when a fuzzy pattern matches', async () => {
     readStdin.mockResolvedValue(
       JSON.stringify({
@@ -47,7 +47,7 @@ describe('runDavyAntiCapitulationHook', () => {
         hook_event_name: 'UserPromptSubmit',
       }),
     );
-    await runDavyAntiCapitulationHook();
+    await runReasoningDisciplineDetect();
     expect(stdoutSpy).toHaveBeenCalledTimes(1);
     const written = JSON.parse(stdoutSpy.mock.calls[0][0]);
     expect(written).toEqual({
@@ -65,7 +65,7 @@ describe('runDavyAntiCapitulationHook', () => {
         hook_event_name: 'UserPromptSubmit',
       }),
     );
-    await runDavyAntiCapitulationHook();
+    await runReasoningDisciplineDetect();
     expect(stdoutSpy).not.toHaveBeenCalled();
   });
 
@@ -76,20 +76,20 @@ describe('runDavyAntiCapitulationHook', () => {
         hook_event_name: 'UserPromptSubmit',
       }),
     );
-    await runDavyAntiCapitulationHook();
+    await runReasoningDisciplineDetect();
     expect(stdoutSpy).toHaveBeenCalledTimes(1);
   });
 
   it('throws when stdin is malformed JSON', async () => {
     readStdin.mockResolvedValue('{not valid json');
-    await expect(runDavyAntiCapitulationHook()).rejects.toThrow(SyntaxError);
+    await expect(runReasoningDisciplineDetect()).rejects.toThrow(SyntaxError);
   });
 
   it('throws when the parsed event lacks the prompt field', async () => {
     readStdin.mockResolvedValue(
       JSON.stringify({ hook_event_name: 'UserPromptSubmit' }),
     );
-    await expect(runDavyAntiCapitulationHook()).rejects.toThrow(
+    await expect(runReasoningDisciplineDetect()).rejects.toThrow(
       'Invalid hook event: prompt must be a non-empty string',
     );
   });
@@ -101,7 +101,7 @@ describe('runDavyAntiCapitulationHook', () => {
         hook_event_name: 'PostToolUse',
       }),
     );
-    await expect(runDavyAntiCapitulationHook()).rejects.toThrow(
+    await expect(runReasoningDisciplineDetect()).rejects.toThrow(
       'Invalid hook event: hook_event_name must be "UserPromptSubmit"',
     );
   });
@@ -114,7 +114,7 @@ describe('runDavyAntiCapitulationHook', () => {
       }),
     );
     readFile.mockResolvedValue('{ broken json');
-    await expect(runDavyAntiCapitulationHook()).rejects.toThrow(SyntaxError);
+    await expect(runReasoningDisciplineDetect()).rejects.toThrow(SyntaxError);
   });
 
   it('throws when the loaded config fails schema validation', async () => {
@@ -125,7 +125,7 @@ describe('runDavyAntiCapitulationHook', () => {
       }),
     );
     readFile.mockResolvedValue(JSON.stringify({ ...validConfig, version: '' }));
-    await expect(runDavyAntiCapitulationHook()).rejects.toThrow(
+    await expect(runReasoningDisciplineDetect()).rejects.toThrow(
       'Invalid hook config: version must be a non-empty string',
     );
   });

@@ -8,7 +8,7 @@ import {
   validateHookEvent,
 } from '#lib/hooks';
 
-export async function runDavyAntiCapitulationHook() {
+export async function runReasoningDisciplineDetect() {
   const event = validateHookEvent(JSON.parse(await readStdin()));
   const configPath = join(import.meta.dirname, 'davy-anti-capitulation.json');
   const config = validateHookConfig(
