@@ -10,7 +10,7 @@ import {
 
 export async function runReasoningDisciplineDetect() {
   const event = validateHookEvent(JSON.parse(await readStdin()));
-  const configPath = join(import.meta.dirname, 'davy-anti-capitulation.json');
+  const configPath = join(import.meta.dirname, 'reasoning-discipline.json');
   const config = validateHookConfig(
     JSON.parse(await readFile(configPath, 'utf8')),
   );

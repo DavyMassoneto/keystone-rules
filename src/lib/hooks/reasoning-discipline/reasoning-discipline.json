@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
-  "name": "davy-anti-capitulation",
-  "description": "Detects social pressure patterns in user prompts and injects a reminder to prevent capitulation without new technical evidence.",
+  "name": "reasoning-discipline",
+  "description": "Detects pressure language in user prompts and injects a reminder enforcing disciplined reasoning instead of reflexive agreement or stonewalling.",
   "patterns": [
     { "type": "fuzzy", "value": "voce esta errado" },
     { "type": "fuzzy", "value": "ta errado" },

@@ -15,7 +15,7 @@ vi.mock('node:fs/promises', async () => {
 
 const validConfig = {
   version: '1.0.0',
-  name: 'davy-anti-capitulation',
+  name: 'reasoning-discipline',
   description: 'detects social pressure',
   patterns: [
     { type: 'fuzzy', value: 'you are wrong' },
