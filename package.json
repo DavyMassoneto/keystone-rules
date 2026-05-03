@@ -11,6 +11,7 @@
     "#lib": "./src/lib/index.js",
     "#lib/auth-check": "./src/lib/auth-check/index.js",
     "#lib/claude-invoker": "./src/lib/claude-invoker/index.js",
+    "#lib/claude-md": "./src/lib/claude-md/index.js",
     "#lib/doctor-output": "./src/lib/doctor-output/index.js",
     "#lib/errors": "./src/lib/errors/index.js",
     "#lib/file-ops": "./src/lib/file-ops/index.js",
