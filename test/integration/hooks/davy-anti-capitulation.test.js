@@ -32,10 +32,10 @@ describe('davy-anti-capitulation hook', () => {
     );
   });
 
-  it('emits the reminder JSON to stdout when a regex pattern matches', async () => {
+  it('emits the reminder JSON to stdout when the capitalization regex matches', async () => {
     const { stdout, stderr, exitCode } = await runHook(
       JSON.stringify({
-        prompt: 'this is broken!!!',
+        prompt: 'isso é PROIBIDO aqui',
         hook_event_name: 'UserPromptSubmit',
       }),
     );
