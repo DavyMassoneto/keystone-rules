@@ -3,7 +3,7 @@ import { runHook } from './_helpers/run-hook.mjs';
 
 const reminderSnippet = 'This user just expressed frustration.';
 
-describe('davy-anti-capitulation hook', () => {
+describe('reasoning-discipline detect hook', () => {
   it('exits 0 with empty stdout when the prompt is clean', async () => {
     const { stdout, stderr, exitCode } = await runHook(
       JSON.stringify({
@@ -51,7 +51,7 @@ describe('davy-anti-capitulation hook', () => {
     const { stdout, stderr, exitCode } = await runHook('{ not valid json');
     expect(exitCode).not.toBe(0);
     expect(stdout).toBe('');
-    expect(stderr).toContain('davy-anti-capitulation hook failed');
+    expect(stderr).toContain('reasoning-discipline detect hook failed');
   });
 
   it('exits non-zero with stderr message when the event lacks the prompt field', async () => {

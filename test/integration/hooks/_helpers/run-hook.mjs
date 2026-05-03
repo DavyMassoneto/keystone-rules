@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 
 const hookPath = fileURLToPath(
   new URL(
-    '../../../../src/lib/hooks/reasoning-discipline/davy-anti-capitulation.mjs',
+    '../../../../src/lib/hooks/reasoning-discipline/reasoning-discipline-detect.mjs',
     import.meta.url,
   ),
 );

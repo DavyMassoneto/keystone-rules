@@ -4,6 +4,8 @@ import { runReasoningDisciplineDetect } from './run-davy-anti-capitulation-hook.
 try {
   await runReasoningDisciplineDetect();
 } catch (err) {
-  process.stderr.write(`davy-anti-capitulation hook failed: ${err.message}\n`);
+  process.stderr.write(
+    `reasoning-discipline detect hook failed: ${err.message}\n`,
+  );
   process.exit(1);
 }
