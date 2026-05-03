@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "davy-anti-capitulation",
+  "description": "Detects social pressure patterns in user prompts and injects a reminder to prevent capitulation without new technical evidence.",
+  "patterns": [
+    { "type": "fuzzy", "value": "voce esta errado" },
+    { "type": "fuzzy", "value": "ta errado" },
+    { "type": "fuzzy", "value": "isso nao faz sentido" },
+    { "type": "fuzzy", "value": "nao faz sentido" },
+    { "type": "fuzzy", "value": "isso nao funciona" },
+    { "type": "fuzzy", "value": "isso e ofensivo" },
+    { "type": "fuzzy", "value": "ta ofensivo" },
+    { "type": "fuzzy", "value": "para de" },
+    { "type": "fuzzy", "value": "pare de" },
+    { "type": "fuzzy", "value": "you are wrong" },
+    { "type": "fuzzy", "value": "this is wrong" },
+    { "type": "fuzzy", "value": "this doesnt make sense" },
+    { "type": "fuzzy", "value": "this doesnt work" },
+    { "type": "fuzzy", "value": "stop doing" },
+    { "type": "regex", "value": "!{3,}" },
+    { "type": "regex", "value": "\\b(ERRADO|PROIBIDO|NUNCA|JAMAIS)\\b" }
+  ],
+  "fuzzyThreshold": 0.25,
+  "reminder": "ATTENTION: The user expressed disapproval. STOP. Do not reverse your previous position based on emotional pressure alone. Verify whether the user provided new technical evidence. If no new evidence was provided, defend your previous position with argument. Asking for the specific technical reason behind the disapproval is mandatory before any revision."
+}
