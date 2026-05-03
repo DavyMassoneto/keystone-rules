@@ -6,7 +6,7 @@ Pacote de configuração opinativa para agentes LLM de codificação. Distribui 
 
 ## Status
 
-🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. Comandos de instalação/atualização ainda virão em fases futuras.
+🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. O pacote já distribui o primeiro hook comportamental (`davy-anti-capitulation`); os comandos de instalação/atualização ainda virão em fases futuras.
 
 ## Instalação
 
@@ -62,6 +62,14 @@ Verificações executadas:
 **Exit code:** `0` quando todas as verificações são `ok`/`warn`/`skipped`; `1` quando qualquer verificação resulta em `error`.
 
 **Variável de ambiente `KEYSTONE_CLAUDE_HOME`:** se setada, sobrescreve `~/.claude/`. Útil para testes e ambientes isolados.
+
+### Behavioral hooks
+
+The package distributes behavioral hooks to be installed via the future `install` command. Currently included:
+
+- `davy-anti-capitulation`: UserPromptSubmit hook that detects social pressure patterns in user prompts and injects a reminder to the LLM, preventing capitulation without new technical evidence.
+
+These hooks become installable when the `install` command is implemented.
 
 ## Plataformas suportadas
 
