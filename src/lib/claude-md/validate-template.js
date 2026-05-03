@@ -1,7 +1,5 @@
 import { InvalidTemplateError } from '#lib/errors';
-import { isNonEmptyArray } from './is-non-empty-array.js';
-import { isNonEmptyString } from './is-non-empty-string.js';
-import { isObject } from './is-object.js';
+import { isNonEmptyArray, isNonEmptyString, isObject } from '#lib/shared';
 import { validateSection } from './validate-section.js';
 
 export function validateTemplate(template) {

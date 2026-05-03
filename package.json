@@ -20,6 +20,7 @@
     "#lib/package-info": "./src/lib/package-info/index.js",
     "#lib/paths": "./src/lib/paths/index.js",
     "#lib/platform": "./src/lib/platform/index.js",
+    "#lib/shared": "./src/lib/shared/index.js",
     "#commands": "./src/commands/index.js",
     "#cli": "./src/cli/index.js"
   },

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isObject } from '#lib/claude-md';
+import { isObject } from '#lib/shared';
 
 describe('isObject', () => {
   it('returns true for a plain object', () => {

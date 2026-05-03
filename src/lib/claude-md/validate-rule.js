@@ -1,6 +1,5 @@
 import { InvalidTemplateError } from '#lib/errors';
-import { isNonEmptyString } from './is-non-empty-string.js';
-import { isObject } from './is-object.js';
+import { isNonEmptyString, isObject } from '#lib/shared';
 import { validateRuleExample } from './validate-rule-example.js';
 
 export function validateRule(rule, path) {
