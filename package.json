@@ -15,6 +15,7 @@
     "#lib/doctor-output": "./src/lib/doctor-output/index.js",
     "#lib/errors": "./src/lib/errors/index.js",
     "#lib/file-ops": "./src/lib/file-ops/index.js",
+    "#lib/hooks": "./src/lib/hooks/index.js",
     "#lib/logger": "./src/lib/logger/index.js",
     "#lib/manifest": "./src/lib/manifest/index.js",
     "#lib/package-info": "./src/lib/package-info/index.js",
