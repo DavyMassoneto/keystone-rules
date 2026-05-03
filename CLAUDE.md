@@ -33,7 +33,7 @@ Este arquivo registra regras obrigatórias para qualquer LLM trabalhando no repo
   - `#cli` → `./src/cli/index.js`
   - `#lib/<subpasta>` → `./src/lib/<subpasta>/index.js` para CADA subpasta de `src/lib/` (ex.: `#lib/errors`, `#lib/auth-check`, `#lib/claude-invoker`).
   Adicionar entrada nova ao `package.json` SEMPRE que uma nova subpasta de `src/lib/` for criada.
-- **Sem deep relative imports** (mais de 1 nível de `../`). Exceções autorizadas explicitamente: `src/lib/package-info/get-package-info.js` (lê package.json da raiz) e `test/unit/lib/logger/colors-enabled.test.js` (testa helper privado não exposto em barrel).
+- **Sem deep relative imports** (mais de 1 nível de `../`). Exceções autorizadas explicitamente: `src/lib/package-info/get-package-info.js` (lê package.json da raiz), `test/unit/lib/logger/colors-enabled.test.js` (testa helper privado não exposto em barrel) e os helpers de integration test `test/integration/cli/_helpers/run-cli.js` e `test/integration/hooks/_helpers/run-hook.mjs` (boundary necessário para resolver entry scripts via `node`).
 - **Cada pasta tem barrel `index.js`** que reexporta TUDO da pasta — arquivos diretos E barrels das subpastas via `export * from './subpasta/index.js'`.
 - **Imports externos a `src/lib/`** (em `src/cli/`, `src/commands/`, testes gerais) usam o barrel raiz: `import { X } from '#lib'`. Nunca `import { X } from '#lib/errors'` nesses arquivos.
 - **Imports cross-folder DENTRO de `src/lib/`** (de uma subpasta para outra) usam o barrel da subpasta destino: `import { X } from '#lib/<outra-subpasta>'`. Não usar `#lib` (causa ciclo de own-barrel) nem `'../<outra>/index.js'` (caminho relativo cross-folder não é interceptável por `vi.mock`, validado empiricamente em Vitest 4.x).
