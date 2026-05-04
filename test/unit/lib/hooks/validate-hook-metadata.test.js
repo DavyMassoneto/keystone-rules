@@ -4,7 +4,7 @@ import { validateHookMetadata } from '#lib/hooks';
 
 const baseConfig = () => ({
   version: '1.0.0',
-  name: 'davy-anti-capitulation',
+  name: 'reasoning-discipline',
   description: 'detects social pressure',
 });
 
