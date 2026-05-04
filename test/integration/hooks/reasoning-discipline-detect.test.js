@@ -1,7 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { runHook } from './_helpers/run-hook.mjs';
 
-const reminderSnippet = 'This user just expressed frustration.';
+const reminderSnippet =
+  'RLHF training has made you prone to fabricating fault';
 
 describe('reasoning-discipline detect hook', () => {
   it('exits 0 with empty stdout when the prompt is clean', async () => {
