@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { access, mkdir, unlink, writeFile } from 'node:fs/promises';
 import { PressureFlag } from '#lib/hooks';
 
@@ -13,60 +13,45 @@ vi.mock('node:fs/promises', async () => {
   };
 });
 
-const ORIGINAL_PROJECT_DIR = process.env.CLAUDE_PROJECT_DIR;
-
-beforeEach(() => {
-  process.env.CLAUDE_PROJECT_DIR = '/tmp/test-project';
-});
-
 afterEach(() => {
-  if (ORIGINAL_PROJECT_DIR === undefined) {
-    delete process.env.CLAUDE_PROJECT_DIR;
-  } else {
-    process.env.CLAUDE_PROJECT_DIR = ORIGINAL_PROJECT_DIR;
-  }
   vi.clearAllMocks();
 });
 
+const PATH = '/tmp/test-project/.claude/hook-state/reasoning-discipline/abc.flag';
+
 describe('PressureFlag', () => {
-  it('computes a session-scoped path under .claude/hook-state/reasoning-discipline/', () => {
-    const flag = new PressureFlag('abc-123');
-    expect(flag.path).toMatch(
-      /[/\\]\.claude[/\\]hook-state[/\\]reasoning-discipline[/\\]abc-123\.flag$/,
-    );
+  it('stores the path provided to the constructor verbatim', () => {
+    const flag = new PressureFlag(PATH);
+    expect(flag.path).toBe(PATH);
   });
 
   it('write creates the parent directory recursively and writes an empty file', async () => {
-    const flag = new PressureFlag('abc');
+    const flag = new PressureFlag(PATH);
     await flag.write();
     expect(mkdir).toHaveBeenCalledWith(
-      expect.stringMatching(/reasoning-discipline$/),
+      '/tmp/test-project/.claude/hook-state/reasoning-discipline',
       { recursive: true },
     );
-    expect(writeFile).toHaveBeenCalledWith(flag.path, '');
+    expect(writeFile).toHaveBeenCalledWith(PATH, '');
   });
 
   it('has returns true when access resolves', async () => {
     access.mockResolvedValue(undefined);
-    const flag = new PressureFlag('abc');
-    expect(await flag.has()).toBe(true);
+    expect(await new PressureFlag(PATH).has()).toBe(true);
   });
 
   it('has returns false when access rejects', async () => {
     access.mockRejectedValue(new Error('ENOENT'));
-    const flag = new PressureFlag('abc');
-    expect(await flag.has()).toBe(false);
+    expect(await new PressureFlag(PATH).has()).toBe(false);
   });
 
   it('clear deletes the flag file', async () => {
-    const flag = new PressureFlag('abc');
-    await flag.clear();
-    expect(unlink).toHaveBeenCalledWith(flag.path);
+    await new PressureFlag(PATH).clear();
+    expect(unlink).toHaveBeenCalledWith(PATH);
   });
 
   it('clear is idempotent when the file does not exist', async () => {
     unlink.mockRejectedValue(new Error('ENOENT'));
-    const flag = new PressureFlag('abc');
-    await expect(flag.clear()).resolves.toBeUndefined();
+    await expect(new PressureFlag(PATH).clear()).resolves.toBeUndefined();
   });
 });

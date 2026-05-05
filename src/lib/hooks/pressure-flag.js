@@ -1,15 +1,9 @@
 import { access, mkdir, unlink, writeFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { dirname } from 'node:path';
 
 export class PressureFlag {
-  constructor(sessionId) {
-    this.path = join(
-      process.env.CLAUDE_PROJECT_DIR,
-      '.claude',
-      'hook-state',
-      'reasoning-discipline',
-      `${sessionId}.flag`,
-    );
+  constructor(path) {
+    this.path = path;
   }
 
   async write() {
