@@ -63,13 +63,13 @@ Verificações executadas:
 
 **Variável de ambiente `KEYSTONE_CLAUDE_HOME`:** se setada, sobrescreve `~/.claude/`. Útil para testes e ambientes isolados.
 
-### Behavioral hooks
+### Hooks comportamentais
 
-The package distributes behavioral hook systems to be installed via the future `install` command. Currently included:
+O pacote distribui sistemas de hook comportamentais a serem instalados pelo comando `install` (fase futura). Atualmente incluído:
 
-- `reasoning-discipline`: a two-hook system enforcing disciplined reasoning under user pressure. The detect hook (`UserPromptSubmit`) flags pressure language in the user prompt and injects a reminder; the audit hook (`Stop`) inspects the LLM response and forces continuation with feedback when the response shows sycophantic patterns.
+- `reasoning-discipline`: sistema de dois hooks que impõe raciocínio disciplinado sob pressão do usuário. O hook de detecção (`UserPromptSubmit`) sinaliza linguagem de pressão no prompt e injeta um lembrete; o hook de auditoria (`Stop`) inspeciona a resposta da LLM e força continuação com feedback quando a resposta exibe padrões sycophantic.
 
-These hooks become installable when the `install` command is implemented.
+Esses hooks ficam instaláveis quando o comando `install` for implementado.
 
 ## Plataformas suportadas
 
