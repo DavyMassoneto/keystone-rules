@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isNonEmptyString } from '#lib/claude-md';
+import { isNonEmptyString } from '#lib/shared';
 
 describe('isNonEmptyString', () => {
   it('returns true for a non-empty string', () => {

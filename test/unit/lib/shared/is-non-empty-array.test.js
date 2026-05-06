@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isNonEmptyArray } from '#lib/claude-md';
+import { isNonEmptyArray } from '#lib/shared';
 
 describe('isNonEmptyArray', () => {
   it('returns true for an array with items', () => {
