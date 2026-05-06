@@ -1,4 +1,5 @@
 export * from './detect-pressure.js';
+export * from './extract-last-assistant-turn.js';
 export * from './format-hook-context.js';
 export * from './match-fuzzy-pattern.js';
 export * from './pressure-flag.js';
