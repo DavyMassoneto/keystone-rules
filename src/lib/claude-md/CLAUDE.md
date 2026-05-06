@@ -12,7 +12,7 @@ Behavioral template content, validation, and rendering. The future `install` com
 - `validateTemplate(template)`: pure. Throws `InvalidTemplateError` on schema mismatch with a message indicating the offending path (e.g. `sections[2].rules[0].directive`). Returns the template on success.
 - `renderTemplate(template)`: pure. Receives a validated template, returns a markdown string.
 
-The remaining exports (`validateSection`, `validateRule`, `validateRuleExample`, `renderSection`, `renderRule`, `renderRuleExample`, `isObject`, `isNonEmptyString`, `isNonEmptyArray`) are implementation details kept in their own files for SRP and testability.
+The remaining exports (`validateSection`, `validateRule`, `validateRuleExample`, `renderSection`, `renderRule`, `renderRuleExample`) are implementation details kept in their own files for SRP and testability. Generic predicates (`isObject`, `isNonEmptyString`, `isNonEmptyArray`) live in `src/lib/shared/` and are imported via `#lib/shared`.
 
 ## Schema
 

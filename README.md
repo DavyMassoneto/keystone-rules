@@ -6,7 +6,7 @@ Pacote de configuração opinativa para agentes LLM de codificação. Distribui 
 
 ## Status
 
-🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. Comandos de instalação/atualização ainda virão em fases futuras.
+🚧 **Em desenvolvimento ativo.** CLI funcional para os comandos `version`, `help` e `doctor`. O pacote já distribui o primeiro sistema comportamental (`reasoning-discipline`); os comandos de instalação/atualização ainda virão em fases futuras.
 
 ## Instalação
 
@@ -62,6 +62,14 @@ Verificações executadas:
 **Exit code:** `0` quando todas as verificações são `ok`/`warn`/`skipped`; `1` quando qualquer verificação resulta em `error`.
 
 **Variável de ambiente `KEYSTONE_CLAUDE_HOME`:** se setada, sobrescreve `~/.claude/`. Útil para testes e ambientes isolados.
+
+### Hooks comportamentais
+
+O pacote distribui sistemas de hook comportamentais a serem instalados pelo comando `install` (fase futura). Atualmente incluído:
+
+- `reasoning-discipline`: sistema de dois hooks que impõe raciocínio disciplinado sob pressão do usuário. O hook de detecção (`UserPromptSubmit`) sinaliza linguagem de pressão no prompt e injeta um lembrete; o hook de auditoria (`Stop`) inspeciona a resposta da LLM e força continuação com feedback quando a resposta exibe padrões sycophantic.
+
+Esses hooks ficam instaláveis quando o comando `install` for implementado.
 
 ## Plataformas suportadas
 
