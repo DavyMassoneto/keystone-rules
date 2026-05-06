@@ -3,6 +3,7 @@ export * from './format-hook-context.js';
 export * from './match-fuzzy-pattern.js';
 export * from './pressure-flag.js';
 export * from './read-stdin.js';
+export * from './read-transcript.js';
 export * from './resolve-pressure-flag-path.js';
 export * from './validate-detection-config.js';
 export * from './validate-hook-config.js';
